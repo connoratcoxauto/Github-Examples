@@ -1,0 +1,31 @@
+name: Manually Deploy Jaspersoft Resources
+run-name: ${{ github.event.inputs.tags }} - Manually Deploy Jaspersoft Resources
+
+on:
+  workflow_dispatch:
+    inputs:
+      tags:
+        description: Environment Tags
+        type: choice
+        default: Dev
+        options:
+          - Dev
+          - Silo5
+          - UAT
+        required: true
+      resource_type:
+        description: Resource type
+        type: choice
+        options:
+          - report
+          - inputControl
+          - file
+        default: report
+        required: true
+      resource_paths:
+        description: Resource paths
+        required: true
+      deploy_related_resources:
+        description: Deploy related resources (report only)
+        type: boolean
+        default: true
